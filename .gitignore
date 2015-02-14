@@ -1,16 +1,16 @@
 # =============== #
 # Unity generated #
 # =============== #
-Temp/
-Obj/
-UnityGenerated/
-Library/
-Assets/AssetStoreTools*
+Potionography/Temp/
+Potionography/Obj/
+Potionography/UnityGenerated/
+Potionography/Library/
+Potionography/Assets/AssetStoreTools*
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
-ExportedObj/
+Potionography/ExportedObj/
 *.svd
 *.userprefs
 *.csproj
