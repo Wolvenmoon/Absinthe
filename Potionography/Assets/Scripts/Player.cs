@@ -1,13 +1,13 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System; // FOr date time. Like why can't I do System.DateTime.Now
 
 public class Player : MonoBehaviour {
 	// The Player is the script that actually does things other than move the player. So things that I actually want to follow usually.
 
+	public Inventory2 inventory;
 
 	// Bullet Variables
-
 	private static Vector3 shootOffset = new Vector3(.5f, .5f, 0f); // Offset from player bullet is created
 	private static Vector3 bulletInitVel = new Vector3(5f, 5f, 0f); // Initial velocity of bullet potion
 	public GameObject potion; // potion that is copied to be shot around. Yahoo! May make static?
@@ -33,12 +33,7 @@ public class Player : MonoBehaviour {
 	{
 	
 	}
-
-	void FixedUpdate()
-	{
-
-	}
-
+	
 	private long CurrTime()
 	{
 		return System.DateTime.Now.Ticks / 10000; // Divide by 10,000 since DateTime increments Ticks by units of 100ns. I want ms.
@@ -59,6 +54,7 @@ public class Player : MonoBehaviour {
 
 	public void Kill()
 	{
+		health = 0; // you dead
 		Respawn();
 	}
 
@@ -78,6 +74,16 @@ public class Player : MonoBehaviour {
 		transform.position = spawnLoc.position; // GOTO spawn location
 		//rigidbody2D.MovePosition(new Vector2(spawnLoc.position.x, spawnLoc.position.y)); // Seemed like a good idea to reset some forces on the rigid body
 		//rigidbody2D.velocity = new Vector2(0,0);
+	}
+
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		//print ("hitting " + other.tag + " : " + other.name);
+		if (other.tag == "Item")
+		{
+			Debug.Log("Player found item! " + other.name);
+			inventory.AddItem(other.GetComponent<Item>());
+		}
 	}
 }
 

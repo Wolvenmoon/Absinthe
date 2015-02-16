@@ -12,9 +12,12 @@ GameObject:
   - 50: {fileID: 5005320}
   - 58: {fileID: 5805320}
   - 61: {fileID: 6105320}
+  - 114: {fileID: 11473640}
+  - 58: {fileID: 5872536}
+  - 61: {fileID: 6110934}
   m_Layer: 0
   m_Name: BasicPot
-  m_TagString: Potion
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,6 +90,17 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_Radius: .0757584199
   m_Center: {x: 0, y: -.0700000003}
+--- !u!58 &5872536
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105320}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: 8be6341e1ce3f4cec9902bc34f72d20a, type: 2}
+  m_IsTrigger: 1
+  m_Radius: .0757584199
+  m_Center: {x: 0, y: -.0700000003}
 --- !u!61 &6105320
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -98,6 +112,32 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: .0559367351, y: .141605735}
   m_Center: {x: -.000825921714, y: .0710271597}
+--- !u!61 &6110934
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105320}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: 8be6341e1ce3f4cec9902bc34f72d20a, type: 2}
+  m_IsTrigger: 1
+  m_Size: {x: .0559367351, y: .141605735}
+  m_Center: {x: -.000825921714, y: .0710271597}
+--- !u!114 &11473640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1c29f2a32e533439ecfa7ea3c966cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  spriteNeutral: {fileID: 21300000, guid: fb8fbcb42f7900347b86e70be27a1bfe, type: 3}
+  spriteHighlighted: {fileID: 21300000, guid: 06f6c867aad7e6a4eb55d00a69fa902b, type: 3}
+  maxSize: 10
 --- !u!198 &19851476
 ParticleSystem:
   m_ObjectHideFlags: 1

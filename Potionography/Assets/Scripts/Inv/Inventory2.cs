@@ -13,14 +13,12 @@ public class Inventory2 : MonoBehaviour {
 	public int rows;
 	
 	public float slotPaddingLeft, slotPaddingTop;
-	
 	public float slotSize;
-	
 	public GameObject slotPrefab; // use slot prefab!
-	
 	private List<GameObject> slotLS;
 	
-	
+	private int emptySlot;
+
 	void Start ()
 	{
 		CreateLayout ();
@@ -35,7 +33,9 @@ public class Inventory2 : MonoBehaviour {
 	private void CreateLayout()
 	{
 		slotLS = new List<GameObject> ();
-		
+
+		emptySlot = slots;
+
 		invWidth = (slots / rows) * (slotSize + slotPaddingLeft) + slotPaddingLeft;
 		invHeight = rows * (slotSize + slotPaddingTop) + slotPaddingTop;
 		
@@ -64,5 +64,47 @@ public class Inventory2 : MonoBehaviour {
 				
 			}
 		}
+	}
+
+	public bool AddItem(Item item)
+	{
+		if (item.maxSize == 1)
+		{
+			return PlaceEmpty (item);
+		}
+		else
+		{
+			foreach (GameObject slot in slotLS)
+			{
+				Slot tmp = slot.GetComponent<Slot>();
+				if (!tmp.IsEmpty)
+				{
+					if (tmp.CurrentItem.type == item.type && tmp.IsAvilable)
+					{
+						tmp.AddItem (item);
+						return true;
+					}
+				}
+			}
+			return PlaceEmpty (item);
+		}
+	}
+
+	private bool PlaceEmpty(Item item)
+	{
+		if (emptySlot > 0)
+		{
+			foreach (GameObject slot in slotLS)
+			{
+				Slot tmp = slot.GetComponent<Slot>();
+				if (tmp.IsEmpty)
+				{
+					tmp.AddItem (item);
+					emptySlot--;
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }
